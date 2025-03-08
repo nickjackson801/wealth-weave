@@ -27,7 +27,7 @@ function App() {
       </div>
 
       {/* Header */}
-      <header className="fixed w-full bg-white shadow-md z-50">
+      <header className="bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
@@ -120,7 +120,7 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <main className="pt-32">
+      <main>
         {/* Background pattern */}
         <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
           <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
