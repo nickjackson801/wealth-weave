@@ -1,65 +1,67 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Resources = () => {
-  const categories = [
+  const navigate = useNavigate()
+
+  const resourceCategories = [
     {
       title: "Guides & Tutorials",
-      items: [
-        {
-          title: "Private Banking 101",
-          description: "A comprehensive guide to private banking services",
-          type: "PDF Guide",
-          length: "25 pages"
-        },
-        {
-          title: "Investment Strategy Masterclass",
-          description: "Video series on advanced investment techniques",
-          type: "Video Series",
-          length: "5 hours"
-        },
-        {
-          title: "Wealth Preservation Strategies",
-          description: "Expert insights on protecting and growing wealth",
-          type: "eBook",
-          length: "12 chapters"
-        }
+      description: "Step-by-step guides on private banking concepts and strategies",
+      icon: (
+        <svg className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      ),
+      resources: [
+        "Private Banking Fundamentals Guide",
+        "Investment Strategy Handbook",
+        "Estate Planning Workbook",
+        "Tax Optimization Guide"
       ]
     },
     {
       title: "Market Research",
-      items: [
-        {
-          title: "Global Market Trends 2024",
-          description: "Analysis of current market conditions and forecasts",
-          type: "Report",
-          length: "Quarterly"
-        },
-        {
-          title: "Emerging Markets Analysis",
-          description: "Opportunities in developing economies",
-          type: "Research Paper",
-          length: "18 pages"
-        }
+      description: "In-depth analysis and reports on global markets and trends",
+      icon: (
+        <svg className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
+      resources: [
+        "Global Market Trends Report",
+        "Investment Opportunities Analysis",
+        "Economic Outlook",
+        "Sector Performance Reviews"
       ]
     },
     {
       title: "Templates & Tools",
-      items: [
-        {
-          title: "Portfolio Tracking Template",
-          description: "Professional-grade Excel template for tracking investments",
-          type: "Excel Template",
-          length: "Multiple sheets"
-        },
-        {
-          title: "Risk Assessment Toolkit",
-          description: "Comprehensive tools for evaluating investment risks",
-          type: "Digital Tool",
-          length: "Interactive"
-        }
+      description: "Professional templates and calculators for financial planning",
+      icon: (
+        <svg className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+      ),
+      resources: [
+        "Investment Portfolio Template",
+        "Financial Goal Planner",
+        "Risk Assessment Calculator",
+        "Estate Distribution Planner"
       ]
     }
   ]
+
+  const handleResourceAccess = (categoryTitle: string, resourceName: string) => {
+    navigate('/coming-soon', {
+      state: {
+        title: `${resourceName} Coming Soon`,
+        description: "We're currently preparing this resource. Sign up for beta access to be the first to know when it becomes available!",
+        returnLink: "/resources",
+        returnText: "Return to Resources"
+      }
+    })
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -69,83 +71,73 @@ const Resources = () => {
             Resources
           </h1>
           <p className="mt-4 text-xl text-gray-600">
-            Access our library of professional resources and educational materials
+            Access our comprehensive collection of private banking resources
           </p>
         </div>
 
-        {/* Search Bar */}
-        <div className="mt-8 max-w-2xl mx-auto">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search resources..."
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
-            />
-            <button className="absolute right-3 top-3">
-              <svg className="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Resource Categories */}
-        <div className="mt-16 space-y-16">
-          {categories.map((category, index) => (
-            <div key={index}>
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">{category.title}</h2>
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {category.items.map((item, itemIndex) => (
-                  <div key={itemIndex} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div className="p-6">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
-                            {item.type}
-                          </span>
-                          <span className="ml-2 text-sm text-gray-500">{item.length}</span>
-                        </div>
-                        <button className="text-indigo-600 hover:text-indigo-800">
-                          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                          </svg>
-                        </button>
-                      </div>
-                      <h3 className="mt-4 text-lg font-semibold text-gray-900">{item.title}</h3>
-                      <p className="mt-2 text-gray-600">{item.description}</p>
-                      <button className="mt-4 text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
-                        Access Resource
-                        <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </button>
-                    </div>
+        <div className="mt-16 grid gap-8 lg:grid-cols-3">
+          {resourceCategories.map((category, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="p-6">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0">
+                    {category.icon}
                   </div>
-                ))}
+                  <div className="ml-4">
+                    <h3 className="text-xl font-semibold text-gray-900">{category.title}</h3>
+                    <p className="mt-1 text-gray-600">{category.description}</p>
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <h4 className="text-sm font-medium text-gray-900">Available Resources:</h4>
+                  <ul className="mt-4 space-y-4">
+                    {category.resources.map((resource, resourceIndex) => (
+                      <li key={resourceIndex}>
+                        <button
+                          onClick={() => handleResourceAccess(category.title, resource)}
+                          className="group flex items-center text-left w-full"
+                        >
+                          <div className="flex-1">
+                            <p className="text-sm font-medium text-gray-900 group-hover:text-indigo-600">
+                              {resource}
+                            </p>
+                          </div>
+                          <div className="ml-4">
+                            <span className="text-indigo-600 group-hover:text-indigo-800 text-sm font-medium inline-flex items-center">
+                              Access
+                              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </span>
+                          </div>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Newsletter Signup */}
-        <div className="mt-20 bg-indigo-700 rounded-2xl shadow-xl overflow-hidden">
-          <div className="px-6 py-12 max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white">
-              Stay Updated
-            </h2>
-            <p className="mt-4 text-lg text-indigo-100">
-              Get weekly updates on new resources and market insights
-            </p>
-            <form className="mt-8 sm:flex justify-center">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full sm:max-w-md px-5 py-3 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent"
-              />
-              <button className="mt-3 sm:mt-0 sm:ml-3 px-6 py-3 bg-white text-indigo-600 font-medium rounded-lg hover:bg-indigo-50 transition-colors">
-                Subscribe
+        <div className="mt-20">
+          <div className="bg-indigo-700 rounded-2xl shadow-xl overflow-hidden">
+            <div className="px-6 py-12 max-w-3xl mx-auto text-center sm:px-12">
+              <h2 className="text-3xl font-bold text-white">
+                Stay Updated
+              </h2>
+              <p className="mt-4 text-lg text-indigo-100">
+                Subscribe to our newsletter to receive updates when new resources become available
+              </p>
+              <button
+                onClick={() => navigate('/signup')}
+                className="mt-8 bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
+              >
+                Subscribe Now
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
