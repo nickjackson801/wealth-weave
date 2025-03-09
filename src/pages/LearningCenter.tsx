@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 const LearningCenter = () => {
   const navigate = useNavigate()
@@ -140,16 +140,28 @@ const LearningCenter = () => {
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold text-gray-900">Live Webinars</h3>
               <p className="mt-2 text-gray-600">Join our weekly live sessions with private banking experts</p>
-              <button className="mt-4 text-indigo-600 hover:text-indigo-800 font-medium">
-                View Schedule →
-              </button>
+              <Link 
+                to="/webinars"
+                className="mt-4 text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center"
+              >
+                View Schedule 
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold text-gray-900">Expert Articles</h3>
               <p className="mt-2 text-gray-600">Read in-depth analysis from industry professionals</p>
-              <button className="mt-4 text-indigo-600 hover:text-indigo-800 font-medium">
-                Browse Articles →
-              </button>
+              <Link 
+                to="/articles"
+                className="mt-4 text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center"
+              >
+                Browse Articles
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>

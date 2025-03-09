@@ -14,6 +14,11 @@ import AdvancedCourse from './pages/courses/AdvancedCourse'
 import TradingCourse from './pages/courses/TradingCourse'
 import ChatBot from './components/ChatBot'
 
+// Import coming soon pages
+import WebinarComingSoon from './pages/coming-soon/WebinarComingSoon'
+import ArticlesComingSoon from './pages/coming-soon/ArticlesComingSoon'
+import ToolsComingSoon from './pages/coming-soon/ToolsComingSoon'
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const basePath = '/wealth-weave'
@@ -245,10 +250,12 @@ function App() {
           <Route path="/learn/intermediate" element={<IntermediateCourse />} />
           <Route path="/learn/advanced" element={<AdvancedCourse />} />
           <Route path="/learn/trading" element={<TradingCourse />} />
-          <Route path="/tools" element={<FinancialTools />} />
+          <Route path="/tools" element={<ToolsComingSoon />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/webinars" element={<WebinarComingSoon />} />
+          <Route path="/articles" element={<ArticlesComingSoon />} />
         </Routes>
 
         {/* ChatBot */}
