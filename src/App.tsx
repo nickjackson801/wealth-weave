@@ -52,17 +52,17 @@ function App() {
             <div className="text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-8">
                 Expert Private Banking Knowledge,{' '}
-                <span className="text-indigo-600">100% Free</span>
+                <span className="text-indigo-600">Free During Beta</span>
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
-                Join thousands of others learning private banking secrets. Get access to expert financial knowledge typically reserved for high-net-worth clients, now available to everyone.
+                Join thousands of others learning private banking secrets. Get early access to expert financial knowledge typically reserved for high-net-worth clients.
               </p>
               
               {/* Email Signup Section */}
               <div className="mt-12 flex flex-col items-center" id="signup">
                 <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-8 w-full max-w-2xl">
                   <h2 className="text-2xl font-semibold text-gray-900 mb-2">Start Your Financial Journey Today</h2>
-                  <p className="text-gray-600 mb-6">Sign up for free access to all our resources and tools</p>
+                  <p className="text-gray-600 mb-6">Sign up now to secure free access during our beta period</p>
                   
                   <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
                     <input
@@ -77,11 +77,11 @@ function App() {
                       type="submit"
                       className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                      Get Free Access
+                      Get Beta Access
                     </button>
                   </form>
                   <p className="mt-3 text-sm text-gray-500">
-                    No credit card required. Unsubscribe anytime.
+                    Limited time offer. No credit card required.
                   </p>
                 </div>
               </div>
@@ -112,8 +112,8 @@ function App() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">Always Free</h3>
-                  <p className="mt-2 text-sm text-gray-500">No hidden fees or surprise charges</p>
+                  <h3 className="text-lg font-semibold text-gray-900">Free Beta Access</h3>
+                  <p className="mt-2 text-sm text-gray-500">Get early access free during our beta period</p>
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@ function App() {
           <div className="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <p className="text-white text-sm font-medium">
-                ✨ Access Private Banking Knowledge, 100% Free Forever ✨
+                ✨ Access Private Banking Knowledge, Free During Beta Launch ✨
               </p>
             </div>
           </div>
