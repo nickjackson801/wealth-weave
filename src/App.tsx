@@ -12,6 +12,7 @@ import BeginnerCourse from './pages/courses/BeginnerCourse'
 import IntermediateCourse from './pages/courses/IntermediateCourse'
 import AdvancedCourse from './pages/courses/AdvancedCourse'
 import TradingCourse from './pages/courses/TradingCourse'
+import ChatBot from './components/ChatBot'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -249,6 +250,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
+
+        {/* ChatBot */}
+        <ChatBot />
       </div>
     </Router>
   )
