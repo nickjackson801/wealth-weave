@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import ComingSoon from '../components/ComingSoon'
 
 const LearningCenter = () => {
   const navigate = useNavigate()
@@ -11,7 +12,7 @@ const LearningCenter = () => {
       topics: ["What is Private Banking?", "High Net Worth Services", "Wealth Preservation"],
       level: "Beginner",
       duration: "2 hours",
-      path: "/learn/beginner"
+      comingSoonTitle: "Private Banking Fundamentals Course Coming Soon"
     },
     {
       title: "Investment Strategies",
@@ -19,7 +20,7 @@ const LearningCenter = () => {
       topics: ["Portfolio Management", "Risk Assessment", "Asset Allocation"],
       level: "Intermediate",
       duration: "3 hours",
-      path: "/learn/intermediate"
+      comingSoonTitle: "Investment Strategies Course Coming Soon"
     },
     {
       title: "Estate Planning",
@@ -27,7 +28,7 @@ const LearningCenter = () => {
       topics: ["Trust Structures", "Tax Optimization", "Succession Planning"],
       level: "Advanced",
       duration: "2.5 hours",
-      path: "/learn/advanced"
+      comingSoonTitle: "Estate Planning Course Coming Soon"
     }
   ]
 
@@ -37,7 +38,7 @@ const LearningCenter = () => {
     topics: ["Market Orders & Execution", "Advanced Trading Strategies", "Risk Management", "Institutional Practices"],
     level: "Bonus",
     duration: "9.5 hours",
-    path: "/learn/trading"
+    comingSoonTitle: "Securities Trading Course Coming Soon"
   }
 
   return (
@@ -85,7 +86,14 @@ const LearningCenter = () => {
                 </div>
 
                 <button 
-                  onClick={() => navigate(course.path)}
+                  onClick={() => navigate('/coming-soon', { 
+                    state: { 
+                      title: course.comingSoonTitle,
+                      description: "We're currently developing this comprehensive course. Sign up for beta access to be the first to know when it launches!",
+                      returnLink: "/learn",
+                      returnText: "Return to Learning Center"
+                    }
+                  })}
                   className="mt-6 w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors"
                 >
                   Start Learning
@@ -124,7 +132,14 @@ const LearningCenter = () => {
               </div>
 
               <button 
-                onClick={() => navigate(bonusCourse.path)}
+                onClick={() => navigate('/coming-soon', {
+                  state: {
+                    title: bonusCourse.comingSoonTitle,
+                    description: "Our comprehensive trading course is under development. Sign up for beta access to be notified when it launches!",
+                    returnLink: "/learn",
+                    returnText: "Return to Learning Center"
+                  }
+                })}
                 className="mt-8 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-md hover:from-indigo-700 hover:to-purple-700 transition-colors font-medium text-lg"
               >
                 Access Bonus Content

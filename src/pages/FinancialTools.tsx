@@ -1,10 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const FinancialTools = () => {
+  const navigate = useNavigate()
+
   const tools = [
     {
       title: "Investment Portfolio Analyzer",
-      description: "Analyze your portfolio's performance and get personalized recommendations",
+      description: "Analyze your portfolio's performance, risk metrics, and allocation",
       icon: (
         <svg className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -13,7 +16,7 @@ const FinancialTools = () => {
     },
     {
       title: "Retirement Calculator",
-      description: "Plan your retirement with our advanced calculator using private banking strategies",
+      description: "Plan your retirement with our advanced forecasting tools",
       icon: (
         <svg className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -22,7 +25,7 @@ const FinancialTools = () => {
     },
     {
       title: "Tax Optimization Tool",
-      description: "Optimize your tax strategy using methods employed by private banks",
+      description: "Optimize your investment tax strategy across multiple accounts",
       icon: (
         <svg className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -31,7 +34,7 @@ const FinancialTools = () => {
     },
     {
       title: "Estate Planning Assistant",
-      description: "Create and manage your estate plan with our interactive tool",
+      description: "Create and manage your estate planning strategy",
       icon: (
         <svg className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -39,6 +42,17 @@ const FinancialTools = () => {
       )
     }
   ]
+
+  const handleToolClick = (toolName: string) => {
+    navigate('/coming-soon', {
+      state: {
+        title: `${toolName} Coming Soon`,
+        description: "We're currently developing this powerful financial tool. Sign up for beta access to be the first to know when it launches!",
+        returnLink: "/tools",
+        returnText: "Return to Financial Tools"
+      }
+    })
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -48,28 +62,35 @@ const FinancialTools = () => {
             Financial Tools
           </h1>
           <p className="mt-4 text-xl text-gray-600">
-            Professional-grade tools to help you manage and grow your wealth
+            Professional-grade tools to optimize your wealth management strategy
           </p>
         </div>
 
-        {/* Tools Grid */}
         <div className="mt-16 grid gap-8 md:grid-cols-2">
           {tools.map((tool, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="p-8">
-                <div className="flex items-center justify-between">
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition-transform hover:scale-105"
+              onClick={() => handleToolClick(tool.title)}
+            >
+              <div className="p-6">
+                <div className="flex items-center">
                   <div className="flex-shrink-0">
                     {tool.icon}
                   </div>
-                  <button className="flex items-center text-indigo-600 hover:text-indigo-800">
-                    Launch Tool
-                    <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </button>
+                  <div className="ml-4">
+                    <h3 className="text-xl font-semibold text-gray-900">{tool.title}</h3>
+                    <p className="mt-1 text-gray-600">{tool.description}</p>
+                  </div>
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-gray-900">{tool.title}</h3>
-                <p className="mt-2 text-gray-600">{tool.description}</p>
+                <div className="mt-4 flex justify-end">
+                  <span className="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
+                    Try Now
+                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
               </div>
             </div>
           ))}
