@@ -31,6 +31,15 @@ const LearningCenter = () => {
     }
   ]
 
+  const bonusCourse = {
+    title: "Securities Trading Mastery",
+    description: "From basic orders to institutional trading strategies",
+    topics: ["Market Orders & Execution", "Advanced Trading Strategies", "Risk Management", "Institutional Practices"],
+    level: "Bonus",
+    duration: "9.5 hours",
+    path: "/learn/trading"
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,6 +93,44 @@ const LearningCenter = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Bonus Course */}
+        <div className="mt-16">
+          <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-white/95 backdrop-blur-sm p-8">
+              <div className="flex items-center justify-between">
+                <span className="px-4 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
+                  {bonusCourse.level}
+                </span>
+                <span className="text-sm text-gray-500">{bonusCourse.duration}</span>
+              </div>
+              <h3 className="mt-4 text-2xl font-bold text-gray-900">{bonusCourse.title}</h3>
+              <p className="mt-2 text-gray-600">{bonusCourse.description}</p>
+              
+              {/* Topics */}
+              <div className="mt-6">
+                <h4 className="text-sm font-medium text-gray-900">Comprehensive Coverage:</h4>
+                <ul className="mt-3 grid grid-cols-2 gap-4">
+                  {bonusCourse.topics.map((topic, topicIndex) => (
+                    <li key={topicIndex} className="flex items-center text-sm text-gray-600">
+                      <svg className="h-5 w-5 text-indigo-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      {topic}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <button 
+                onClick={() => navigate(bonusCourse.path)}
+                className="mt-8 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-md hover:from-indigo-700 hover:to-purple-700 transition-colors font-medium text-lg"
+              >
+                Access Bonus Content
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Additional Resources */}
