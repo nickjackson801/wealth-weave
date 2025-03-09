@@ -124,7 +124,14 @@ const LearningCenter = () => {
               </div>
 
               <button 
-                onClick={() => navigate(bonusCourse.path)}
+                onClick={() => navigate('/coming-soon', {
+                  state: {
+                    title: "Securities Trading Mastery Course Coming Soon",
+                    description: "Our comprehensive trading course is under development. Sign up for beta access to be notified when it launches!",
+                    returnLink: "/learn",
+                    returnText: "Return to Learning Center"
+                  }
+                })}
                 className="mt-8 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-md hover:from-indigo-700 hover:to-purple-700 transition-colors font-medium text-lg"
               >
                 Access Bonus Content
