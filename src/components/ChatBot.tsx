@@ -8,6 +8,129 @@ interface Message {
   timestamp: Date
 }
 
+// Knowledge base for courses and website information
+const knowledgeBase = {
+  courses: {
+    beginner: {
+      title: 'Private Banking Fundamentals',
+      topics: [
+        {
+          name: 'What is Private Banking',
+          content: 'Private banking provides personalized financial services to high-net-worth individuals. The course covers the fundamentals of private banking services, client relationships, and wealth preservation strategies.'
+        },
+        {
+          name: 'High Net Worth Services',
+          content: 'Learn about exclusive services offered to high-net-worth clients, including personalized portfolio management, estate planning, tax optimization, and concierge banking services.'
+        },
+        {
+          name: 'Wealth Preservation',
+          content: 'Understand key strategies for preserving and growing wealth across generations, including risk management, diversification, and long-term investment planning.'
+        }
+      ],
+      duration: '2 hours',
+      prerequisites: 'No prior experience required',
+      certification: 'Certificate of completion provided'
+    },
+    intermediate: {
+      title: 'Investment Strategies',
+      topics: [
+        {
+          name: 'Portfolio Management',
+          content: 'Master advanced portfolio management techniques, including asset allocation, rebalancing strategies, and risk-adjusted return optimization.'
+        },
+        {
+          name: 'Risk Assessment',
+          content: 'Learn comprehensive risk assessment methodologies, including market risk, credit risk, and operational risk analysis for high-net-worth portfolios.'
+        },
+        {
+          name: 'Asset Allocation',
+          content: 'Explore sophisticated asset allocation strategies across multiple asset classes, considering tax efficiency and client-specific objectives.'
+        }
+      ],
+      duration: '3 hours',
+      prerequisites: 'Basic understanding of financial markets',
+      certification: 'Advanced certification available'
+    },
+    advanced: {
+      title: 'Estate Planning',
+      topics: [
+        {
+          name: 'Trust Structures',
+          content: 'Deep dive into various trust structures, including revocable, irrevocable, charitable, and dynasty trusts, with their specific applications and benefits.'
+        },
+        {
+          name: 'Tax Optimization',
+          content: 'Advanced tax planning strategies for high-net-worth individuals, including international tax considerations and estate tax minimization techniques.'
+        },
+        {
+          name: 'Succession Planning',
+          content: 'Comprehensive approach to succession planning, including business succession, wealth transfer strategies, and family governance structures.'
+        }
+      ],
+      duration: '2.5 hours',
+      prerequisites: 'Completion of intermediate course recommended',
+      certification: 'Expert level certification provided'
+    },
+    trading: {
+      title: 'Securities Trading Mastery',
+      topics: [
+        {
+          name: 'Trading Fundamentals',
+          content: 'Master the basics of market orders, limit orders, stop orders, and technical analysis. Learn to read market data and understand price action.'
+        },
+        {
+          name: 'Advanced Trading Strategies',
+          content: 'Comprehensive coverage of options trading, futures, derivatives, and algorithmic trading strategies used by institutional investors.'
+        },
+        {
+          name: 'Risk Management',
+          content: 'Professional position sizing techniques, risk-to-reward ratios, and portfolio-level risk management strategies.'
+        },
+        {
+          name: 'Institutional Practices',
+          content: 'Learn about block trading, market making, and regulatory compliance in institutional trading environments.'
+        }
+      ],
+      duration: '9.5 hours',
+      prerequisites: 'Intermediate level market knowledge recommended',
+      certification: 'Professional trading certification available'
+    }
+  },
+  website: {
+    pricing: {
+      beta: 'All courses are currently free during our beta period',
+      future: 'After beta, we will offer flexible subscription tiers to suit different learning needs',
+      enterprise: 'Custom enterprise solutions available for institutions'
+    },
+    features: {
+      learning: [
+        'Expert-led video courses',
+        'Interactive assessments',
+        'Real-world case studies',
+        'Progress tracking',
+        'Certification programs'
+      ],
+      tools: [
+        'Portfolio analysis tools',
+        'Risk assessment calculators',
+        'Investment planning software',
+        'Market research dashboard'
+      ],
+      resources: [
+        'Comprehensive guides',
+        'Market research reports',
+        'Expert webinars',
+        'Community forums'
+      ]
+    },
+    support: {
+      hours: '24/7 chat support',
+      email: 'support@wealthweave.com',
+      response: 'Typical response time under 2 hours'
+    }
+  }
+}
+
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
@@ -20,12 +143,20 @@ const ChatBot = () => {
   useEffect(() => {
     const getInitialGreeting = () => {
       const path = location.pathname
-      if (path.includes('/learn')) {
-        return "Hi! I'm here to help you with any questions about the course material. What would you like to know?"
+      if (path.includes('/learn/beginner')) {
+        return "Welcome to the Private Banking Fundamentals course! I can help you understand the basics of private banking. What would you like to know?"
+      } else if (path.includes('/learn/intermediate')) {
+        return "Welcome to the Investment Strategies course! I can help you with portfolio management and risk assessment. What questions do you have?"
+      } else if (path.includes('/learn/advanced')) {
+        return "Welcome to the Estate Planning course! I can assist you with understanding complex trust structures and succession planning. How can I help?"
+      } else if (path.includes('/learn/trading')) {
+        return "Welcome to the Securities Trading Mastery course! I can help you understand trading strategies and risk management. What would you like to learn?"
+      } else if (path.includes('/learn')) {
+        return "Welcome to the Learning Center! I can help you choose the right course or answer questions about our educational programs. What would you like to know?"
       } else if (path === '/about') {
         return "Hello! I can tell you more about WealthWeave and our mission. What would you like to know?"
       } else {
-        return "Welcome to WealthWeave! I'm your AI assistant. How can I help you today?"
+        return "Welcome to WealthWeave! I'm your AI assistant, ready to help you with courses, tools, and resources. How can I assist you today?"
       }
     }
 
@@ -62,13 +193,12 @@ const ChatBot = () => {
     setIsTyping(true)
 
     try {
-      // Here you would typically make an API call to your AI service
-      // For now, we'll simulate a response
+      // Simulate response time for natural feeling
       setTimeout(() => {
         const botMessage: Message = {
           id: (Date.now() + 1).toString(),
           type: 'bot',
-          content: generateResponse(inputMessage),
+          content: generateDetailedResponse(inputMessage, location.pathname),
           timestamp: new Date()
         }
         setMessages(prev => [...prev, botMessage])
@@ -80,18 +210,75 @@ const ChatBot = () => {
     }
   }
 
-  // Temporary response generation - Replace with actual AI service integration
-  const generateResponse = (input: string) => {
+  // Enhanced response generation with detailed course content
+  const generateDetailedResponse = (input: string, currentPath: string) => {
     const lowerInput = input.toLowerCase()
-    if (lowerInput.includes('course') || lowerInput.includes('learn')) {
-      return "Our courses are designed by industry experts and cover everything from basic private banking concepts to advanced trading strategies. Each course includes interactive lessons, practical examples, and assessments to track your progress."
-    } else if (lowerInput.includes('price') || lowerInput.includes('cost')) {
-      return "During our beta period, all courses are available for free! After the beta period, we'll introduce different subscription tiers to suit various learning needs."
-    } else if (lowerInput.includes('trading')) {
-      return "Our trading course is a comprehensive program covering market fundamentals, advanced strategies, risk management, and institutional practices. It's designed for both beginners and experienced traders."
-    } else {
-      return "I'm here to help! Feel free to ask about our courses, company, or any specific topics you're interested in learning about."
+    
+    // Course-specific responses based on current page
+    if (currentPath.includes('/learn/')) {
+      const coursePath = currentPath.split('/learn/')[1]
+      const courseInfo = knowledgeBase.courses[coursePath as keyof typeof knowledgeBase.courses]
+      
+      if (courseInfo) {
+        // Topic-specific responses
+        for (const topic of courseInfo.topics) {
+          if (lowerInput.includes(topic.name.toLowerCase())) {
+            return topic.content
+          }
+        }
+
+        // Course-specific questions
+        if (lowerInput.includes('duration') || lowerInput.includes('how long')) {
+          return `This course is ${courseInfo.duration} in length. ${courseInfo.prerequisites}`
+        }
+        if (lowerInput.includes('prerequisite') || lowerInput.includes('required')) {
+          return courseInfo.prerequisites
+        }
+        if (lowerInput.includes('certification') || lowerInput.includes('certificate')) {
+          return courseInfo.certification
+        }
+      }
     }
+
+    // General course inquiries
+    if (lowerInput.includes('course') || lowerInput.includes('learn')) {
+      if (lowerInput.includes('beginner') || lowerInput.includes('fundamental')) {
+        return `Our Private Banking Fundamentals course covers ${knowledgeBase.courses.beginner.topics.map(t => t.name).join(', ')}. The course is ${knowledgeBase.courses.beginner.duration} long and ${knowledgeBase.courses.beginner.prerequisites}.`
+      }
+      if (lowerInput.includes('intermediate') || lowerInput.includes('investment')) {
+        return `Our Investment Strategies course covers ${knowledgeBase.courses.intermediate.topics.map(t => t.name).join(', ')}. The course is ${knowledgeBase.courses.intermediate.duration} long and ${knowledgeBase.courses.intermediate.prerequisites}.`
+      }
+      if (lowerInput.includes('advanced') || lowerInput.includes('estate')) {
+        return `Our Estate Planning course covers ${knowledgeBase.courses.advanced.topics.map(t => t.name).join(', ')}. The course is ${knowledgeBase.courses.advanced.duration} long and ${knowledgeBase.courses.advanced.prerequisites}.`
+      }
+      if (lowerInput.includes('trading')) {
+        return `Our Securities Trading Mastery course covers ${knowledgeBase.courses.trading.topics.map(t => t.name).join(', ')}. The course is ${knowledgeBase.courses.trading.duration} long and ${knowledgeBase.courses.trading.prerequisites}.`
+      }
+      return "We offer four comprehensive courses: Private Banking Fundamentals (beginner), Investment Strategies (intermediate), Estate Planning (advanced), and Securities Trading Mastery (bonus course). Which one would you like to know more about?"
+    }
+
+    // Pricing and subscription inquiries
+    if (lowerInput.includes('price') || lowerInput.includes('cost') || lowerInput.includes('subscription')) {
+      return `${knowledgeBase.website.pricing.beta}. ${knowledgeBase.website.pricing.future}. For institutions, ${knowledgeBase.website.pricing.enterprise}.`
+    }
+
+    // Feature inquiries
+    if (lowerInput.includes('feature') || lowerInput.includes('offer')) {
+      return `We offer comprehensive learning features including: ${knowledgeBase.website.features.learning.join(', ')}. Our platform also provides tools such as: ${knowledgeBase.website.features.tools.join(', ')}.`
+    }
+
+    // Support inquiries
+    if (lowerInput.includes('support') || lowerInput.includes('help') || lowerInput.includes('contact')) {
+      return `We provide ${knowledgeBase.website.support.hours}. You can reach us at ${knowledgeBase.website.support.email}. ${knowledgeBase.website.support.response}.`
+    }
+
+    // Trading-specific inquiries
+    if (lowerInput.includes('trading') || lowerInput.includes('market') || lowerInput.includes('stock')) {
+      return `Our Securities Trading Mastery course covers everything from basic market orders to advanced institutional trading practices. Topics include ${knowledgeBase.courses.trading.topics.map(t => t.name).join(', ')}. Would you like specific information about any of these topics?`
+    }
+
+    // Default response with suggestion for topics
+    return "I can help you with information about our courses, pricing, features, or support. Feel free to ask about specific topics like 'trading strategies', 'estate planning', or 'private banking basics'."
   }
 
   return (
