@@ -8,6 +8,9 @@ import FinancialTools from './pages/FinancialTools'
 import Resources from './pages/Resources'
 import About from './pages/About'
 import Signup from './pages/Signup'
+import BeginnerCourse from './pages/courses/BeginnerCourse'
+import IntermediateCourse from './pages/courses/IntermediateCourse'
+import AdvancedCourse from './pages/courses/AdvancedCourse'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -236,6 +239,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/learn" element={<LearningCenter />} />
+          <Route path="/learn/beginner" element={<BeginnerCourse />} />
+          <Route path="/learn/intermediate" element={<IntermediateCourse />} />
+          <Route path="/learn/advanced" element={<AdvancedCourse />} />
           <Route path="/tools" element={<FinancialTools />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/about" element={<About />} />

@@ -1,27 +1,33 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const LearningCenter = () => {
+  const navigate = useNavigate()
+  
   const courses = [
     {
       title: "Private Banking Fundamentals",
       description: "Learn the basics of private banking and wealth management",
       topics: ["What is Private Banking?", "High Net Worth Services", "Wealth Preservation"],
       level: "Beginner",
-      duration: "2 hours"
+      duration: "2 hours",
+      path: "/learn/beginner"
     },
     {
       title: "Investment Strategies",
       description: "Master advanced investment techniques used by private bankers",
       topics: ["Portfolio Management", "Risk Assessment", "Asset Allocation"],
       level: "Intermediate",
-      duration: "3 hours"
+      duration: "3 hours",
+      path: "/learn/intermediate"
     },
     {
       title: "Estate Planning",
       description: "Understanding wealth transfer and legacy planning",
       topics: ["Trust Structures", "Tax Optimization", "Succession Planning"],
       level: "Advanced",
-      duration: "2.5 hours"
+      duration: "2.5 hours",
+      path: "/learn/advanced"
     }
   ]
 
@@ -69,7 +75,10 @@ const LearningCenter = () => {
                   </ul>
                 </div>
 
-                <button className="mt-6 w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors">
+                <button 
+                  onClick={() => navigate(course.path)}
+                  className="mt-6 w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors"
+                >
                   Start Learning
                 </button>
               </div>
