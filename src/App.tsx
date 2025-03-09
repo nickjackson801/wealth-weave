@@ -64,6 +64,53 @@ function App() {
                 Expert Private Banking Knowledge,{' '}
                 <span className="text-indigo-600">Free During Beta</span>
               </h1>
+
+              {/* Private Banking Description */}
+              <div className="mt-8 mb-12">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">What is Private Banking?</h2>
+                <div className="max-w-3xl mx-auto text-left bg-white/80 backdrop-blur-lg rounded-xl p-6 shadow-lg">
+                  <p className="text-lg text-gray-700 mb-4">
+                    Private banking is a premium financial service designed for individuals with significant wealth. Think of it as having a dedicated team of financial experts who:
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h3 className="text-lg font-medium text-indigo-600 mb-2">For Your Wealth</h3>
+                      <ul className="space-y-2">
+                        <li className="flex items-start">
+                          <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-gray-700">Customize investment strategies to grow your wealth</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-gray-700">Protect and preserve your assets for future generations</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium text-indigo-600 mb-2">For Your Future</h3>
+                      <ul className="space-y-2">
+                        <li className="flex items-start">
+                          <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-gray-700">Plan for major life events and legacy goals</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-gray-700">Access exclusive investment opportunities and services</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
                 Join thousands of others learning private banking secrets. Get early access to expert financial knowledge typically reserved for high-net-worth clients.
               </p>
