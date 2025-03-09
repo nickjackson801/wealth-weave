@@ -1,6 +1,5 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import ComingSoon from '../components/ComingSoon'
 
 const LearningCenter = () => {
   const navigate = useNavigate()
@@ -12,7 +11,7 @@ const LearningCenter = () => {
       topics: ["What is Private Banking?", "High Net Worth Services", "Wealth Preservation"],
       level: "Beginner",
       duration: "2 hours",
-      comingSoonTitle: "Private Banking Fundamentals Course Coming Soon"
+      path: "/learn/beginner"
     },
     {
       title: "Investment Strategies",
@@ -20,7 +19,7 @@ const LearningCenter = () => {
       topics: ["Portfolio Management", "Risk Assessment", "Asset Allocation"],
       level: "Intermediate",
       duration: "3 hours",
-      comingSoonTitle: "Investment Strategies Course Coming Soon"
+      path: "/learn/intermediate"
     },
     {
       title: "Estate Planning",
@@ -28,7 +27,7 @@ const LearningCenter = () => {
       topics: ["Trust Structures", "Tax Optimization", "Succession Planning"],
       level: "Advanced",
       duration: "2.5 hours",
-      comingSoonTitle: "Estate Planning Course Coming Soon"
+      path: "/learn/advanced"
     }
   ]
 
@@ -38,7 +37,7 @@ const LearningCenter = () => {
     topics: ["Market Orders & Execution", "Advanced Trading Strategies", "Risk Management", "Institutional Practices"],
     level: "Bonus",
     duration: "9.5 hours",
-    comingSoonTitle: "Securities Trading Course Coming Soon"
+    path: "/learn/trading"
   }
 
   return (
@@ -86,14 +85,7 @@ const LearningCenter = () => {
                 </div>
 
                 <button 
-                  onClick={() => navigate('/coming-soon', { 
-                    state: { 
-                      title: course.comingSoonTitle,
-                      description: "We're currently developing this comprehensive course. Sign up for beta access to be the first to know when it launches!",
-                      returnLink: "/learn",
-                      returnText: "Return to Learning Center"
-                    }
-                  })}
+                  onClick={() => navigate(course.path)}
                   className="mt-6 w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors"
                 >
                   Start Learning
@@ -132,14 +124,7 @@ const LearningCenter = () => {
               </div>
 
               <button 
-                onClick={() => navigate('/coming-soon', {
-                  state: {
-                    title: bonusCourse.comingSoonTitle,
-                    description: "Our comprehensive trading course is under development. Sign up for beta access to be notified when it launches!",
-                    returnLink: "/learn",
-                    returnText: "Return to Learning Center"
-                  }
-                })}
+                onClick={() => navigate(bonusCourse.path)}
                 className="mt-8 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-md hover:from-indigo-700 hover:to-purple-700 transition-colors font-medium text-lg"
               >
                 Access Bonus Content
@@ -155,28 +140,42 @@ const LearningCenter = () => {
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold text-gray-900">Live Webinars</h3>
               <p className="mt-2 text-gray-600">Join our weekly live sessions with private banking experts</p>
-              <Link 
-                to="/webinars"
+              <button 
+                onClick={() => navigate('/coming-soon', {
+                  state: {
+                    title: "Live Webinars Coming Soon",
+                    description: "Our expert-led webinars will cover the latest trends in private banking, investment strategies, and wealth management.",
+                    returnLink: "/learn",
+                    returnText: "Return to Learning Center"
+                  }
+                })}
                 className="mt-4 text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center"
               >
                 View Schedule 
                 <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </Link>
+              </button>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold text-gray-900">Expert Articles</h3>
               <p className="mt-2 text-gray-600">Read in-depth analysis from industry professionals</p>
-              <Link 
-                to="/articles"
+              <button 
+                onClick={() => navigate('/coming-soon', {
+                  state: {
+                    title: "Expert Articles Coming Soon",
+                    description: "In-depth analysis and insights from industry professionals on private banking, wealth management, and investment strategies.",
+                    returnLink: "/learn",
+                    returnText: "Return to Learning Center"
+                  }
+                })}
                 className="mt-4 text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center"
               >
                 Browse Articles
                 <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
