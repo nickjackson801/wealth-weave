@@ -68,45 +68,116 @@ function App() {
               {/* Private Banking Description */}
               <div className="mt-8 mb-12">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">What is Private Banking?</h2>
-                <div className="max-w-3xl mx-auto text-left bg-white/80 backdrop-blur-lg rounded-xl p-6 shadow-lg">
-                  <p className="text-lg text-gray-700 mb-4">
-                    Private banking is a premium financial service designed for individuals with significant wealth. Think of it as having a dedicated team of financial experts who:
+                <div className="max-w-4xl mx-auto text-left bg-white/80 backdrop-blur-lg rounded-xl p-8 shadow-lg">
+                  <p className="text-lg text-gray-700 mb-6">
+                    Imagine having a team of financial experts dedicated to helping you grow and protect your money - that's private banking. It's like having a personal financial command center that goes far beyond regular banking services.
                   </p>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <h3 className="text-lg font-medium text-indigo-600 mb-2">For Your Wealth</h3>
-                      <ul className="space-y-2">
+
+                  <div className="mb-8">
+                    <h3 className="text-xl font-medium text-indigo-600 mb-3">Why Private Banking Exists</h3>
+                    <p className="text-gray-700 mb-4">
+                      As your wealth grows, your financial needs become more complex. You might need help with:
+                    </p>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                      <li className="flex items-start">
+                        <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span className="text-gray-700">Managing multiple investment accounts and properties</span>
+                      </li>
+                      <li className="flex items-start">
+                        <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span className="text-gray-700">Reducing taxes while staying compliant with laws</span>
+                      </li>
+                      <li className="flex items-start">
+                        <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span className="text-gray-700">Planning how to pass wealth to future generations</span>
+                      </li>
+                      <li className="flex items-start">
+                        <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span className="text-gray-700">Finding exclusive investment opportunities</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="bg-indigo-50 rounded-lg p-6">
+                      <h3 className="text-xl font-medium text-indigo-600 mb-4">What You Get</h3>
+                      <ul className="space-y-4">
                         <li className="flex items-start">
                           <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-gray-700">Customize investment strategies to grow your wealth</span>
+                          <div>
+                            <span className="font-medium text-gray-900">Personal Banker</span>
+                            <p className="text-sm text-gray-700">A dedicated expert who knows your financial situation and goals</p>
+                          </div>
                         </li>
                         <li className="flex items-start">
                           <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-gray-700">Protect and preserve your assets for future generations</span>
+                          <div>
+                            <span className="font-medium text-gray-900">Custom Investment Plans</span>
+                            <p className="text-sm text-gray-700">Strategies tailored to your risk tolerance and goals</p>
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <div>
+                            <span className="font-medium text-gray-900">Expert Network</span>
+                            <p className="text-sm text-gray-700">Access to tax advisors, estate planners, and investment specialists</p>
+                          </div>
                         </li>
                       </ul>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-indigo-600 mb-2">For Your Future</h3>
-                      <ul className="space-y-2">
+
+                    <div className="bg-indigo-50 rounded-lg p-6">
+                      <h3 className="text-xl font-medium text-indigo-600 mb-4">How It Helps You</h3>
+                      <ul className="space-y-4">
                         <li className="flex items-start">
                           <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-gray-700">Plan for major life events and legacy goals</span>
+                          <div>
+                            <span className="font-medium text-gray-900">Grow Your Wealth</span>
+                            <p className="text-sm text-gray-700">Access to exclusive investments and professional portfolio management</p>
+                          </div>
                         </li>
                         <li className="flex items-start">
                           <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-gray-700">Access exclusive investment opportunities and services</span>
+                          <div>
+                            <span className="font-medium text-gray-900">Protect Your Assets</span>
+                            <p className="text-sm text-gray-700">Strategies to safeguard your wealth from market volatility and legal risks</p>
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <div>
+                            <span className="font-medium text-gray-900">Plan Your Legacy</span>
+                            <p className="text-sm text-gray-700">Ensure your wealth benefits future generations through smart estate planning</p>
+                          </div>
                         </li>
                       </ul>
                     </div>
+                  </div>
+
+                  <div className="mt-8 p-4 bg-gray-50 rounded-lg">
+                    <p className="text-sm text-gray-600 italic">
+                      Private banking traditionally requires high minimum investments (often $1M+), but our platform gives you access to the same knowledge and strategies these experts use, helping you make informed decisions about your financial future.
+                    </p>
                   </div>
                 </div>
               </div>
