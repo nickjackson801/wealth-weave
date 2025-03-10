@@ -69,39 +69,90 @@ function App() {
               <div className="mt-8 mb-12">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">What is Private Banking?</h2>
                 <div className="max-w-4xl mx-auto text-left bg-white/80 backdrop-blur-lg rounded-xl p-8 shadow-lg">
+                  {/* Simple Explanation Section */}
+                  <div className="mb-8 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
+                    <h3 className="text-xl font-medium text-indigo-600 mb-3">Private Banking Simplified</h3>
+                    <p className="text-lg text-gray-700 mb-4">
+                      Think of private banking like having your own personal financial team - similar to how celebrities have personal assistants who handle everything for them. But instead of managing your schedule, these experts manage your money.
+                    </p>
+                    <div className="grid gap-4">
+                      <div className="flex items-start">
+                        <span className="text-2xl mr-3">🏦</span>
+                        <p className="text-gray-700">Regular banking is like going to a restaurant where everyone gets the same menu. Private banking is like having your own personal chef who creates meals just for you.</p>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="text-2xl mr-3">💡</span>
+                        <p className="text-gray-700">Instead of figuring out everything about money by yourself, you get a team of experts who help you make smart decisions about saving, investing, and growing your wealth.</p>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="text-2xl mr-3">🎯</span>
+                        <p className="text-gray-700">They help with everything money-related: from basic things like better interest rates on your accounts, to complex things like planning how to pass money to your children while paying less in taxes.</p>
+                      </div>
+                    </div>
+                  </div>
+
                   <p className="text-lg text-gray-700 mb-6">
                     Imagine having a team of financial experts dedicated to helping you grow and protect your money - that's private banking. It's like having a personal financial command center that goes far beyond regular banking services.
                   </p>
 
+                  {/* Real-World Examples Section */}
+                  <div className="mb-8 bg-white rounded-xl p-6 border border-gray-200">
+                    <h3 className="text-xl font-medium text-indigo-600 mb-3">Real-World Examples</h3>
+                    <p className="text-gray-700 mb-4">Here's what private bankers actually do for their clients:</p>
+                    <div className="grid gap-4">
+                      <div className="flex items-start">
+                        <span className="text-2xl mr-3">📈</span>
+                        <div>
+                          <p className="font-medium text-gray-900">Better Returns on Your Money</p>
+                          <p className="text-gray-700">Instead of a regular savings account paying 0.01%, they might get you 3-4% or suggest better ways to grow your money.</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="text-2xl mr-3">🏠</span>
+                        <div>
+                          <p className="font-medium text-gray-900">Special Mortgage Rates</p>
+                          <p className="text-gray-700">When buying a house, they might get you a better mortgage rate than what's advertised to everyone else.</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="text-2xl mr-3">👨‍👩‍👧‍👦</span>
+                        <div>
+                          <p className="font-medium text-gray-900">Family Money Planning</p>
+                          <p className="text-gray-700">They help set up accounts for your kids' education or create a plan to pass down your business to your children while paying less in taxes.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="mb-8">
                     <h3 className="text-xl font-medium text-indigo-600 mb-3">Why Private Banking Exists</h3>
                     <p className="text-gray-700 mb-4">
-                      As your wealth grows, your financial needs become more complex. You might need help with:
+                      As your money grows, managing it becomes more complicated. You might need help with:
                     </p>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                       <li className="flex items-start">
                         <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-gray-700">Managing multiple investment accounts and properties</span>
+                        <span className="text-gray-700">Keeping track of multiple bank accounts and investments</span>
                       </li>
                       <li className="flex items-start">
                         <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-gray-700">Reducing taxes while staying compliant with laws</span>
+                        <span className="text-gray-700">Finding ways to pay less in taxes (legally)</span>
                       </li>
                       <li className="flex items-start">
                         <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-gray-700">Planning how to pass wealth to future generations</span>
+                        <span className="text-gray-700">Making sure your family is taken care of in the future</span>
                       </li>
                       <li className="flex items-start">
                         <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-gray-700">Finding exclusive investment opportunities</span>
+                        <span className="text-gray-700">Getting access to better investment opportunities</span>
                       </li>
                     </ul>
                   </div>
@@ -115,8 +166,8 @@ function App() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
-                            <span className="font-medium text-gray-900">Personal Banker</span>
-                            <p className="text-sm text-gray-700">A dedicated expert who knows your financial situation and goals</p>
+                            <span className="font-medium text-gray-900">Your Own Money Expert</span>
+                            <p className="text-sm text-gray-700">Someone who knows your situation and is always available to help</p>
                           </div>
                         </li>
                         <li className="flex items-start">
@@ -124,8 +175,8 @@ function App() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
-                            <span className="font-medium text-gray-900">Custom Investment Plans</span>
-                            <p className="text-sm text-gray-700">Strategies tailored to your risk tolerance and goals</p>
+                            <span className="font-medium text-gray-900">Personal Investment Plan</span>
+                            <p className="text-sm text-gray-700">A money plan made just for you, based on what you're comfortable with</p>
                           </div>
                         </li>
                         <li className="flex items-start">
@@ -133,23 +184,23 @@ function App() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
-                            <span className="font-medium text-gray-900">Expert Network</span>
-                            <p className="text-sm text-gray-700">Access to tax advisors, estate planners, and investment specialists</p>
+                            <span className="font-medium text-gray-900">Team of Specialists</span>
+                            <p className="text-sm text-gray-700">Tax experts, investment pros, and other specialists when you need them</p>
                           </div>
                         </li>
                       </ul>
                     </div>
 
                     <div className="bg-indigo-50 rounded-lg p-6">
-                      <h3 className="text-xl font-medium text-indigo-600 mb-4">How It Helps You</h3>
+                      <h3 className="text-xl font-medium text-indigo-600 mb-4">How It Makes Your Life Better</h3>
                       <ul className="space-y-4">
                         <li className="flex items-start">
                           <svg className="h-6 w-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
-                            <span className="font-medium text-gray-900">Grow Your Wealth</span>
-                            <p className="text-sm text-gray-700">Access to exclusive investments and professional portfolio management</p>
+                            <span className="font-medium text-gray-900">More Money Growth</span>
+                            <p className="text-sm text-gray-700">Better ways to make your money grow than regular bank accounts</p>
                           </div>
                         </li>
                         <li className="flex items-start">
@@ -157,8 +208,8 @@ function App() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
-                            <span className="font-medium text-gray-900">Protect Your Assets</span>
-                            <p className="text-sm text-gray-700">Strategies to safeguard your wealth from market volatility and legal risks</p>
+                            <span className="font-medium text-gray-900">Peace of Mind</span>
+                            <p className="text-sm text-gray-700">Experts watching over your money and protecting it from risks</p>
                           </div>
                         </li>
                         <li className="flex items-start">
@@ -166,8 +217,8 @@ function App() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
-                            <span className="font-medium text-gray-900">Plan Your Legacy</span>
-                            <p className="text-sm text-gray-700">Ensure your wealth benefits future generations through smart estate planning</p>
+                            <span className="font-medium text-gray-900">Future Security</span>
+                            <p className="text-sm text-gray-700">Help making sure your family is taken care of for years to come</p>
                           </div>
                         </li>
                       </ul>
@@ -175,8 +226,8 @@ function App() {
                   </div>
 
                   <div className="mt-8 p-4 bg-gray-50 rounded-lg">
-                    <p className="text-sm text-gray-600 italic">
-                      Private banking traditionally requires high minimum investments (often $1M+), but our platform gives you access to the same knowledge and strategies these experts use, helping you make informed decisions about your financial future.
+                    <p className="text-sm text-gray-600">
+                      <span className="font-medium">The Best Part:</span> While private banking usually requires $1 million or more in the bank, our platform gives you access to the same knowledge these experts use. You'll learn the strategies and tips that wealthy people use to grow their money, without needing to be wealthy yourself.
                     </p>
                   </div>
                 </div>
