@@ -11,21 +11,43 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
+      
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm ci --legacy-peer-deps
+          npm list
+      
+      - name: Check Vite Config
+        run: |
+          echo "Vite config contents:"
+          cat vite.config.ts
+      
       - name: Build
-        run: npm run build
+        run: |
+          echo "Starting build process..."
+          npm run build
+          echo "Build completed. Contents of dist directory:"
+          ls -la dist
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
