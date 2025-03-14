@@ -1,0 +1,22 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read/write access to all users for the leads collection
+    match /leads/{document=**} {
+      allow read, write: if true;
+    }
+    
+    // Allow read/write access to all users for the users collection
+    match /users/{document=**} {
+      allow read, write: if true;
+    }
+    
+    // For production, you should restrict access more carefully
+    // Example of more secure rules:
+    // match /users/{userId} {
+    //   allow read: if request.auth != null && request.auth.uid == userId;
+    //   allow write: if request.auth != null && request.auth.uid == userId;
+    // }
+  }
+} 

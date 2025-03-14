@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom'
 import './App.css'
 import { saveEmailSignup } from './services/firebase'
@@ -15,6 +15,7 @@ import AdvancedCourse from './pages/courses/AdvancedCourse'
 import GenericComingSoon from './pages/coming-soon/GenericComingSoon'
 import ChatBot from './components/ChatBot'
 import AdminDashboard from './pages/admin/Dashboard'
+import FirebaseTest from './pages/FirebaseTest'
 
 // Import coming soon pages
 import WebinarComingSoon from './pages/coming-soon/WebinarComingSoon'
@@ -24,6 +25,23 @@ import ToolsComingSoon from './pages/coming-soon/ToolsComingSoon'
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const basePath = '/wealth-weave'
+
+  // Test Firebase connection
+  useEffect(() => {
+    const testFirebase = async () => {
+      try {
+        const result = await saveEmailSignup('test@example.com', 'connection_test');
+        if (result.success) {
+          console.log('Firebase connection successful!');
+        } else {
+          console.error('Firebase connection failed:', result.error);
+        }
+      } catch (error) {
+        console.error('Firebase connection error:', error);
+      }
+    };
+    testFirebase();
+  }, []);
 
   const HomeIcon = () => (
     <svg 
@@ -452,6 +470,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/coming-soon" element={<GenericComingSoon />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/firebase-test" element={<FirebaseTest />} />
         </Routes>
 
         {/* ChatBot */}

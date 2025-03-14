@@ -62,21 +62,42 @@ const Signup = () => {
     setSubmitError('')
 
     try {
-      // Save the user data to Firebase
-      const result = await saveUserData(formData)
+      console.log("Form submission started with data:", formData);
       
-      if (result.success) {
-        console.log('User data saved successfully!')
+      // Validate form data before submission
+      if (!formData.email || !formData.firstName || !formData.lastName) {
+        throw new Error('Please fill in all required fields');
+      }
+      
+      // Save the user data to Firebase
+      console.log("Calling saveUserData with:", formData);
+      const result = await saveUserData(formData);
+      console.log("Result from saveUserData:", result);
+      
+      if (result && result.success) {
+        console.log('User data saved successfully with ID:', result.id);
         setSubmitSuccess(true)
         setTimeout(() => {
           navigate('/learn') // Redirect to Learning Center after successful signup
         }, 2000)
       } else {
-        throw new Error('Failed to save user data')
+        console.error('Failed to save user data, result:', result);
+        throw new Error(result.error ? result.error.toString() : 'Failed to save user data');
       }
     } catch (error) {
-      console.error('Error submitting form:', error)
-      setSubmitError('There was an error saving your information. Please try again.')
+      console.error('Error submitting form:', error);
+      let errorMessage = 'There was an error saving your information. Please try again.';
+      
+      if (error instanceof Error) {
+        console.error('Error details:', {
+          name: error.name,
+          message: error.message,
+          stack: error.stack
+        });
+        errorMessage = `Error: ${error.message}`;
+      }
+      
+      setSubmitError(errorMessage);
     } finally {
       setIsSubmitting(false)
     }
