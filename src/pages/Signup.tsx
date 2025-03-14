@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { saveUserData } from '../services/firebase'
 
 const Signup = () => {
   const navigate = useNavigate()
+  const location = useLocation()
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -13,6 +15,14 @@ const Signup = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+
+  // Set email from state (if coming from homepage)
+  useEffect(() => {
+    if (location.state && location.state.email) {
+      setFormData(prev => ({ ...prev, email: location.state.email }))
+    }
+  }, [location.state])
 
   const experienceLevels = [
     { value: 'beginner', label: 'Beginner - New to Private Banking' },
@@ -49,20 +59,24 @@ const Signup = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitError('')
 
     try {
-      // TODO: Implement actual API call to save user data
-      console.log('Form submitted:', formData)
+      // Save the user data to Firebase
+      const result = await saveUserData(formData)
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      setSubmitSuccess(true)
-      setTimeout(() => {
-        navigate('/learn') // Redirect to Learning Center after successful signup
-      }, 2000)
+      if (result.success) {
+        console.log('User data saved successfully!')
+        setSubmitSuccess(true)
+        setTimeout(() => {
+          navigate('/learn') // Redirect to Learning Center after successful signup
+        }, 2000)
+      } else {
+        throw new Error('Failed to save user data')
+      }
     } catch (error) {
       console.error('Error submitting form:', error)
+      setSubmitError('There was an error saving your information. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -107,6 +121,12 @@ const Signup = () => {
         </div>
 
         <div className="bg-white p-8 rounded-xl shadow-lg">
+          {submitError && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-lg">
+              <p className="text-red-700">{submitError}</p>
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>

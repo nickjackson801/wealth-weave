@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { saveEmailSignup } from '../services/firebase'
 
 const About = () => {
   const navigate = useNavigate()
@@ -10,6 +11,18 @@ const About = () => {
     { label: "Expert Advisors", value: "50+" },
     { label: "Success Rate", value: "98%" }
   ]
+
+  const handleGetStarted = async () => {
+    try {
+      // Track that a user clicked "Get Started" from the About page
+      await saveEmailSignup('unknown_email_about_page_click');
+      navigate('/signup');
+    } catch (error) {
+      console.error('Error tracking conversion:', error);
+      // Still navigate even if tracking fails
+      navigate('/signup');
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -90,7 +103,7 @@ const About = () => {
             Get in touch with our team to learn how we can help you achieve your financial goals
           </p>
           <button 
-            onClick={() => navigate('/signup')}
+            onClick={handleGetStarted}
             className="mt-8 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
           >
             Get Started Now

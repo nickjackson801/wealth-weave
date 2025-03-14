@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom'
 import './App.css'
+import { saveEmailSignup } from './services/firebase'
 
 // Import pages
 import LearningCenter from './pages/LearningCenter'
@@ -13,6 +14,7 @@ import IntermediateCourse from './pages/courses/IntermediateCourse'
 import AdvancedCourse from './pages/courses/AdvancedCourse'
 import GenericComingSoon from './pages/coming-soon/GenericComingSoon'
 import ChatBot from './components/ChatBot'
+import AdminDashboard from './pages/admin/Dashboard'
 
 // Import coming soon pages
 import WebinarComingSoon from './pages/coming-soon/WebinarComingSoon'
@@ -43,11 +45,31 @@ function App() {
   const HomePage = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitError, setSubmitError] = useState('')
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault()
-      // Navigate to signup page with email pre-filled
-      navigate('/signup', { state: { email } })
+      setIsSubmitting(true)
+      setSubmitError('')
+
+      try {
+        // Save the email to Firebase before redirecting
+        const result = await saveEmailSignup(email)
+        
+        if (result.success) {
+          console.log('Email lead saved successfully!')
+          // Navigate to signup page with email pre-filled
+          navigate('/signup', { state: { email } })
+        } else {
+          throw new Error('Failed to save email lead')
+        }
+      } catch (error) {
+        console.error('Error saving email:', error)
+        setSubmitError('There was an error saving your email. Please try again.')
+      } finally {
+        setIsSubmitting(false)
+      }
     }
 
     return (
@@ -244,6 +266,11 @@ function App() {
                   <p className="text-gray-600 mb-6">Sign up now to secure free access during our beta period</p>
                   
                   <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
+                    {submitError && (
+                      <div className="w-full p-2 bg-red-50 border border-red-100 rounded-lg mb-2">
+                        <p className="text-sm text-red-700">{submitError}</p>
+                      </div>
+                    )}
                     <input
                       type="email"
                       value={email}
@@ -254,9 +281,10 @@ function App() {
                     />
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      disabled={isSubmitting}
+                      className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
                     >
-                      Get Beta Access
+                      {isSubmitting ? 'Processing...' : 'Get Beta Access'}
                     </button>
                   </form>
                   <p className="mt-3 text-sm text-gray-500">
@@ -423,6 +451,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/coming-soon" element={<GenericComingSoon />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
 
         {/* ChatBot */}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { saveEmailSignup } from '../services/firebase'
 
 const Resources = () => {
   const navigate = useNavigate()
@@ -61,6 +62,18 @@ const Resources = () => {
         returnText: "Return to Resources"
       }
     })
+  }
+
+  const handleSubscribe = async () => {
+    try {
+      // Track that a user clicked "Subscribe Now" from the Resources page
+      await saveEmailSignup('unknown_email_resources_subscribe');
+      navigate('/signup');
+    } catch (error) {
+      console.error('Error tracking subscription:', error);
+      // Still navigate even if tracking fails
+      navigate('/signup');
+    }
   }
 
   return (
@@ -132,7 +145,7 @@ const Resources = () => {
                 Subscribe to our newsletter to receive updates when new resources become available
               </p>
               <button
-                onClick={() => navigate('/signup')}
+                onClick={handleSubscribe}
                 className="mt-8 bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
               >
                 Subscribe Now
